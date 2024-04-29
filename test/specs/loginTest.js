@@ -19,6 +19,11 @@ describe('Wp Pool Login', () => {
         // await expect($('#flash')).toBeExisting()
         // await expect($('#flash')).toHaveTextContaining(
         //     'You logged into a secure area!')
-    })
+    });
+    it('should demonstrate the getCSSProperty command', async () => {
+        const elem = await $('#wpcontent')
+        const color = await elem.getCSSProperty('color')
+        console.log('color is: ', color.parsed.hex)
+    });
 })
 

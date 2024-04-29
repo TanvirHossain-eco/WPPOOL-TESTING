@@ -91,10 +91,11 @@ describe('Dark Mode Plugin Testing', () => {
         await browser.pause(3000)
         const isDarkMoreElem = await $('#wpcontent')
         const isDarkModeColor = await isDarkMoreElem.getCSSProperty('background-color')
-        console.log ('Background Color is ' + isDarkModeColor)
+        console.log ('Background Color is ', isDarkModeColor.parsed.hex)
 
 
     });
+
    
 });
 
