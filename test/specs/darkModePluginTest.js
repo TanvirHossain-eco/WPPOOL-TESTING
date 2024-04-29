@@ -86,8 +86,14 @@ describe('Dark Mode Plugin Testing', () => {
         console.log ('Dark Mode Backend is Enabled Successfully')
         await browser.pause(3000)    
     });
-    it('', async() => {
-        
+    it('Validate whether the Darkmode is working or not on the Admin Dashboard', async() => {
+        await $('#menu-dashboard').click()
+        await browser.pause(3000)
+        const isDarkMoreElem = await $('#wpcontent')
+        const isDarkModeColor = await isDarkMoreElem.getCSSProperty('background-color')
+        console.log ('Background Color is ' + isDarkModeColor)
+
+
     });
    
 });
