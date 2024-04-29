@@ -17,7 +17,8 @@ describe('Dark Mode Plugin Testing', () => {
     it('Check Whether or not WP Dark Mode Plugin is Installed & Activated', async() => {
         // await browser.maximizeWindow()
         // await browser.url('https://dev-wppoolstesting.pantheonsite.io/wp-admin/')
-        await $('#menu-plugins').click()
+        const installedPluginsMenu = await $('#menu-plugins')
+        await installedPluginsMenu.click()
         await browser.pause(3000)
         // const darkmodeExists = await browser.isExisting()
         await $("input[type='search']").setValue('wp dark mode')
@@ -82,19 +83,28 @@ describe('Dark Mode Plugin Testing', () => {
         await $('#toplevel_page_wp-dark-mode a').click()
         await browser.pause(3000)
         const darkMode = await $('#wp-admin-bar-wp-dark-mode-admin-bar-switch span:nth-of-type(2)')
-        darkMode.click()
+        await darkMode.click()
         console.log ('Dark Mode Backend is Enabled Successfully')
         await browser.pause(3000)    
     });
     it('Validate whether the Darkmode is working or not on the Admin Dashboard', async() => {
         await $('#menu-dashboard').click()
         await browser.pause(3000)
-        const isDarkMoreElem = await $('#wpcontent')
-        const isDarkModeColor = await isDarkMoreElem.getCSSProperty('background-color')
-        console.log ('Background Color is ', isDarkModeColor.parsed.hex)
-
-
+        const darkMoreElem = await $('#wpcontent')
+        const actualDarkModeColor = await darkMoreElem.getCSSProperty('background-color')
+        const expectedDarkModeColor = '#000000'
+        await expect(expectedDarkModeColor).toEqual(actualDarkModeColor.parsed.hex)
+        
+        if(actualDarkModeColor.parsed.hex.includes('#000000')){
+            console.log ('Dark Mode Color is Verified & Dark Mode Color Code: ', actualDarkModeColor.parsed.hex)
+        }else{
+            console.log ('Dark Mode Color is not Verified & Current Color Code: ', actualDarkModeColor.parsed.hex)
+        }
     });
+    it('Navigate to the WP Dark Mode', async() => {
+        
+    });
+
 
    
 });
