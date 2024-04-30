@@ -26,4 +26,12 @@ describe('Wp Pool Login', () => {
         console.log('color is: ', color.parsed.hex)
     });
 })
+// console.log('selSwitchElem1 => ', selSwitchElem1);
+// console.log("el 1 => ", selSwitchElem1);
+        // console.log("el 2 => ", selSwitchElem2);
+        // console.log("el 3 => ", selSwitchElem3);
+        // //check if classlist contains '_selected'
+        // console.log(selSwitchElem1.classList.contains('_selected'));
+        // console.log(selSwitchElem2.classList.contains('_selected'));
+        // console.log(selSwitchElem3.classList.contains('_selected'));
 

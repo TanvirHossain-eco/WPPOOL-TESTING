@@ -86,7 +86,7 @@ describe('Dark Mode Plugin Testing', () => {
     it('Enable Backend Darkmode from Settings', async() => {
         
         await $('#toplevel_page_wp-dark-mode div.wp-menu-name').click()
-        await browser.pause(3000)
+        await browser.pause(6000)
         const darkMode = await $('#wp-admin-bar-wp-dark-mode-admin-bar-switch span:nth-of-type(2)')
         await darkMode.click()
         console.log ('Dark Mode Backend is Enabled Successfully')
@@ -115,38 +115,33 @@ describe('Dark Mode Plugin Testing', () => {
         const swSettingsElem = await $('div.wp-dark-mode-admin-sidebar-nav > div:nth-of-type(2) a:nth-of-type(1)')
         await swSettingsElem.click()
         await browser.pause(3000)
+        const switchElem1 = await $('div.bg-transparent > div.gap-6 > div.rounded > div.flex-wrap > div:nth-of-type(1)')
         const selSwitchElem1 = await $('div.bg-transparent > div.gap-6 > div.rounded > div.flex-wrap > div:nth-of-type(1)').getAttribute('class')
-        console.log('selSwitchElem1 => ', selSwitchElem1);
-        // const selSwitchElem2 = await $('div.bg-transparent > div.gap-6 > div.rounded > div.flex-wrap > div:nth-of-type(2)')
-        // const selSwitchElem3 = await $('div.bg-transparent > div.gap-6 > div.rounded > div.flex-wrap > div:nth-of-type(3)')
-        // const saveBtn = await $('button.bg-blue-500');
-        // if (selSwitchElem1.classList.contains('div._selected')){
-        //     await selSwitchElem2.click()
-        //     console.log('2nd Tile is Selected')
-        //     await saveBtn.click()
-        //     await browser.pause(3000)
-        // } else if (selSwitchElem2.classList.contains('div._selected')){
-        //     await selSwitchElem3.click()
-        //     console.log('3rd Tile is Selected')
-        //     await saveBtn.click()
-        //     await browser.pause(3000)
-        // } else if (selSwitchElem3.classList.contains('div._selected')) {
-        //     await selSwitchElem1.click()
-        //     console.log('1st Tile is Selected')
-        //     await saveBtn.click()
-        //     await browser.pause(3000)
-        // }
-        // console.log("el 1 => ", selSwitchElem1);
-        // console.log("el 2 => ", selSwitchElem2);
-        // console.log("el 3 => ", selSwitchElem3);
-        // //check if classlist contains '_selected'
-        // console.log(selSwitchElem1.classList.contains('_selected'));
-        // console.log(selSwitchElem2.classList.contains('_selected'));
-        // console.log(selSwitchElem3.classList.contains('_selected'));
+        const switchElem2 = await $('div.bg-transparent > div.gap-6 > div.rounded > div.flex-wrap > div:nth-of-type(2)')
+        const selSwitchElem2 = await $('div.bg-transparent > div.gap-6 > div.rounded > div.flex-wrap > div:nth-of-type(2)').getAttribute('class')
+        const switchElem3 = await $('div.bg-transparent > div.gap-6 > div.rounded > div.flex-wrap > div:nth-of-type(3)')
+        const selSwitchElem3 = await $('div.bg-transparent > div.gap-6 > div.rounded > div.flex-wrap > div:nth-of-type(3)').getAttribute('class')
+        const saveBtn = await $('button.bg-blue-500');
+        if (selSwitchElem1.includes('_selected')){
+            await switchElem2.click()
+            console.log('2nd Tile is Selected')
+            await saveBtn.click()
+            await browser.pause(3000)
+        } else if (selSwitchElem2.includes('_selected')){
+            await switchElem3.click()
+            console.log('3rd Tile is Selected')
+            await saveBtn.click()
+            await browser.pause(3000)
+        } else {
+            await switchElem1.click()
+            console.log('1st Tile is Selected')
+            await saveBtn.click()
+            await browser.pause(3000)
+        }
+                
+    });
+    it('Switch Settings - Select Custom Switch size & Scale it to 220', async() => {
         
     });
-
-
-   
 });
 
