@@ -115,10 +115,27 @@ describe('Dark Mode Plugin Testing', () => {
         const swSettingsElem = await $('div.wp-dark-mode-admin-sidebar-nav > div:nth-of-type(2) a:nth-of-type(1)')
         await swSettingsElem.click()
         await browser.pause(3000)
-        const selSwitchElem1 = await $('div.bg-transparent > div.gap-6 > div.rounded > div.flex-wrap > div:nth-of-type(1)')
-        const selSwitchElem2 = await $('div.bg-transparent > div.gap-6 > div.rounded > div.flex-wrap > div:nth-of-type(2)')
-        const selSwitchElem3 = await $('div.bg-transparent > div.gap-6 > div.rounded > div.flex-wrap > div:nth-of-type(3)')
-        const saveBtn = await $('button.bg-blue-500');
+        const selSwitchElem1 = await $('div.bg-transparent > div.gap-6 > div.rounded > div.flex-wrap > div:nth-of-type(1)').getAttribute('class')
+        console.log('selSwitchElem1 => ', selSwitchElem1);
+        // const selSwitchElem2 = await $('div.bg-transparent > div.gap-6 > div.rounded > div.flex-wrap > div:nth-of-type(2)')
+        // const selSwitchElem3 = await $('div.bg-transparent > div.gap-6 > div.rounded > div.flex-wrap > div:nth-of-type(3)')
+        // const saveBtn = await $('button.bg-blue-500');
+        // if (selSwitchElem1.classList.contains('div._selected')){
+        //     await selSwitchElem2.click()
+        //     console.log('2nd Tile is Selected')
+        //     await saveBtn.click()
+        //     await browser.pause(3000)
+        // } else if (selSwitchElem2.classList.contains('div._selected')){
+        //     await selSwitchElem3.click()
+        //     console.log('3rd Tile is Selected')
+        //     await saveBtn.click()
+        //     await browser.pause(3000)
+        // } else if (selSwitchElem3.classList.contains('div._selected')) {
+        //     await selSwitchElem1.click()
+        //     console.log('1st Tile is Selected')
+        //     await saveBtn.click()
+        //     await browser.pause(3000)
+        // }
         // console.log("el 1 => ", selSwitchElem1);
         // console.log("el 2 => ", selSwitchElem2);
         // console.log("el 3 => ", selSwitchElem3);
@@ -126,25 +143,6 @@ describe('Dark Mode Plugin Testing', () => {
         // console.log(selSwitchElem1.classList.contains('_selected'));
         // console.log(selSwitchElem2.classList.contains('_selected'));
         // console.log(selSwitchElem3.classList.contains('_selected'));
-
-        if (await selSwitchElem1.isSelected()){
-            await selSwitchElem2.click()
-            console.log('2nd Tile is Selected')
-            await saveBtn?.click()
-            await browser.pause(3000)
-        } else if (await selSwitchElem2.isSelected()){
-            await selSwitchElem3.click()
-            console.log('3rd Tile is Selected')
-            await saveBtn?.click()
-            await browser.pause(3000)
-        } else if (await selSwitchElem3.isSelected()) {
-            await selSwitchElem1.click()
-            // console.log('sw3 ', selSwitchElem1);
-            console.log('1st Tile is Selected')
-            // await saveBtn?.click()
-            // await browser.pause(3000)
-        }
-        
         
     });
 
