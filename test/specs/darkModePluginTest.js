@@ -115,27 +115,29 @@ describe('Dark Mode Plugin Testing', () => {
         const swSettingsElem = await $('div.wp-dark-mode-admin-sidebar-nav > div:nth-of-type(2) a:nth-of-type(1)')
         await swSettingsElem.click()
         await browser.pause(3000)
-        const switchElem1 = await $('div.bg-transparent > div.gap-6 > div.rounded > div.flex-wrap > div:nth-of-type(1)')
-        const selSwitchElem1 = await switchElem1.getAttribute('class')
-        const switchElem2 = await $('div.bg-transparent > div.gap-6 > div.rounded > div.flex-wrap > div:nth-of-type(2)')
-        const selSwitchElem2 = await switchElem2.getAttribute('class')
+        // const switchElem1 = await $('div.bg-transparent > div.gap-6 > div.rounded > div.flex-wrap > div:nth-of-type(1)')
+        // const selSwitchElem1 = await switchElem1.getAttribute('class')
+        // const switchElem2 = await $('div.bg-transparent > div.gap-6 > div.rounded > div.flex-wrap > div:nth-of-type(2)')
+        // const selSwitchElem2 = await switchElem2.getAttribute('class')
         const switchElem3 = await $('div.bg-transparent > div.gap-6 > div.rounded > div.flex-wrap > div:nth-of-type(3)')
         const selSwitchElem3 = await switchElem3.getAttribute('class')
         const saveBtn1 = await $('button.bg-blue-500');
-        if (selSwitchElem1.includes('_selected')){
-            await switchElem2.click()
-            console.log('2nd Tile is Selected')
-            await saveBtn1.click()
-            await browser.pause(3000)
-        } else if (selSwitchElem2.includes('_selected')){
+        if (!selSwitchElem3.includes('_selected')){
             await switchElem3.click()
-            console.log('3rd Tile is Selected')
+            console.log('3rd Tile is Selected now')
             await saveBtn1.click()
             await browser.pause(3000)
-        } else {
-            await switchElem1.click()
-            console.log('1st Tile is Selected')
-            await saveBtn1.click()
+        } 
+        // else if (selSwitchElem2.includes('_selected')){
+        //     await switchElem3.click()
+        //     console.log('3rd Tile is Selected')
+        //     await saveBtn1.click()
+        //     await browser.pause(3000)
+        // } 
+        else {
+            // await switchElem1.click()
+            console.log('3rd Tile was Selected')
+            // await saveBtn1.click()
             await browser.pause(3000)
         }
         // await browser.debug()
@@ -174,18 +176,28 @@ describe('Dark Mode Plugin Testing', () => {
         const switchPosition = await $('div.gap-8 > div > div.flex > div:nth-of-type(2) > div.flex-col')
         await switchPosition.scrollIntoView()
         await browser.pause(3000)
-        const leftPosition = await $('div.gap-8 > div > div.flex > div:nth-of-type(2) div.bg-gray-100 > span')
-        const selLeftPosition = await leftPosition.getAttribute('class')
+        const inactiveleftPosition = await $('div.gap-8 > div > div.flex > div:nth-of-type(2) div.bg-gray-100 > span')
+        const inleftText = await inactiveleftPosition.getText()
+        const activeLeftPosition = await $('div.gap-8 > div > div.flex > div:nth-of-type(2) div.bg-blue-600 > span')
+        const acLeftText = await activeLeftPosition.getText()
         const saveBtn3 = await $('button.bg-blue-500');
-        if (!selLeftPosition.includes('shadow-md')){
-            await leftPosition.click()
+        if (inleftText.includes('Left')){
+            await inactiveleftPosition.click()
             await saveBtn3.click()
             console.log('Floating Switch Position is selected Left Bottom')
+            await browser.pause(3000)
+        } else if (acLeftText.includes('Left')){
+            console.log('Floating Switch Position is remain selected as Left Bottom')
+            // await activeLeftPosition.click()
+            // await saveBtn3.click()
             await browser.pause(3000)
         } else {
             console.log('Floating Switch Position was selected Left Bottom')
             await browser.pause(3000)
+
         }
+        
+        
 
     });
     it('Disable Keyboard Shortcut from the Accessibility Settings', async() => {
@@ -210,5 +222,86 @@ describe('Dark Mode Plugin Testing', () => {
             await browser.pause(3000)
         }          
     });
+    it('Enable “Darkmode Toggle Animation” & change the “Animation Effect” from the default selections', async() => {
+        const siteAnimationElem = await $('div.wp-dark-mode-admin-sidebar-nav > div:nth-of-type(2) a:nth-of-type(5)') 
+        await siteAnimationElem.click()
+        await browser.pause(3000)
+        const siteAnimation = await $('div.main-content-header h3')
+        await siteAnimation.scrollIntoView()
+        await browser.pause(3000)
+        const animationElem = await $('div.w-auto > div')   
+        const actAnimationElem = await animationElem.getAttribute('class')
+        if (actAnimationElem.includes('bg-slate-200')){
+            await animationElem.click()
+            const saveBtn5 = await $('button.bg-blue-500');
+            await saveBtn5.click()
+            console.log('Animation is Enabled')
+            await browser.pause(3000)
+        } else {
+            console.log('Animation was Enabled')
+            await browser.pause(3000)
+        }
+        const animationEffect = await $('div:nth-of-type(1) > div > div.flex > div.relative div.gap-1')
+        await animationEffect.scrollIntoView()
+        await browser.pause(3000)
+        const effectElem1 = await $('div:nth-of-type(3) > span.flex') //Flip
+        const effectElem1Text = await effectElem1.getText()
+        const effectElem1Class = await effectElem1.getAttribute('class')
+        // const effectElem2 = await $('div:nth-of-type(4) > span.flex')
+        // const effectElem2Text = await effectElem2.getText()
+        // const effectElem2Class = await effectElem2.getAttribute('class')
+        if (!effectElem1Class.includes('border-blue-600')){
+            await effectElem1.click()
+            const saveBtn6 = await $('button.bg-blue-500');
+            await saveBtn6.click()
+            console.log(effectElem1Text, ' Animation Effect is Selected')
+            await browser.pause(3000)
+        } else {
+            // await effectElem2.click()
+            // const saveBtn6 = await $('button.bg-blue-500');
+            // await saveBtn6.click()
+            console.log(effectElem1Text, ' Animation Effect was Selected')
+            await browser.pause(3000)
+        }
+
+    });
+    it('Validate whether the Darkmode is working or not on the Admin Dashboard', async() => {
+        // await browser.maximizeWindow()
+        // await browser.url('https://dev-wppoolstesting.pantheonsite.io')
+        const WPPOOLWebsite = await $('#wp-admin-bar-site-name > a')
+        await WPPOOLWebsite.click()
+        await browser.pause(3000)
+        const WPDMSwitchElem = await $('div.wp-dark-mode-floating-switch')
+        const SwitchElemPositionX = await WPDMSwitchElem.getLocation('x')
+        const SwitchElemPositionY = await WPDMSwitchElem.getLocation('y')
+        console.log('Element X Position: ', SwitchElemPositionX)
+        console.log('Element Y Position: ', SwitchElemPositionY)
+        const expectedX = 10; // Left edge of the screen
+        const expectedY = 584; // Bottom edge of the screen
+        await expect(SwitchElemPositionX).toEqual(expectedX)
+        await expect(SwitchElemPositionY).toEqual(expectedY)
+        console.log('Dark Mode Floating Switch Left Position is Validated')
+        await browser.pause(6000)
+        const WPDMSwitchElem2 = await $('div.wp-dark-mode-floating-switch > div > div')
+        const switchPositionScale = await WPDMSwitchElem2.getAttribute('style')
+        if (switchPositionScale.includes('2.2')) {
+            console.log('switchPositionScale => ', switchPositionScale)
+            console.log('Dark Mode Floating Switch Scale Position is Validated')
+        }else {
+            console.log('Dark Mode Floating Switch Scale Position is not Validated')
+        }
+        
+    });
+
+
+    // it('Validate whether the Darkmode is working or not from the Frontend', async() => {
+    //     await browser.maximizeWindow()
+    //     const WPPOOLWebsite = await $('#wp-admin-bar-site-name > a')
+    //     await WPPOOLWebsite.click()
+    //     await browser.pause(3000)
+    //     const WPDMSwitchPosition = await $('div.wp-dark-mode-floating-switch')
+    //     await WPDMSwitchPosition.getCSSProperty('style')
+
+    // });
 });
 
