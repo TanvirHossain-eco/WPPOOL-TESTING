@@ -1,0 +1,4 @@
+{
+  "using": "css selector",
+  "value": "div.plugin-card-wp-dark-mode div.desc a"
+}

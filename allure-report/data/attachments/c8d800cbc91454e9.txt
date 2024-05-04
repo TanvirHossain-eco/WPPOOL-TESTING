@@ -1,0 +1,4 @@
+{
+  "using": "css selector",
+  "value": "div.bg-transparent > div.gap-6 > div.rounded > div.flex-wrap > div:nth-of-type(3)"
+}

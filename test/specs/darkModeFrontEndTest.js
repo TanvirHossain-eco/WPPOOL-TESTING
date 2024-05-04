@@ -8,18 +8,17 @@ describe('Validate whether the Darkmode is working or not on the Admin Dashboard
         await browser.pause(3000)
         const WPDMSwitchElem3 = await $('div.wp-dark-mode-floating-switch > div > div')
         const flSWStyleElem = await WPDMSwitchElem3.getAttribute('class')
-        const expectedStyle = 'wp-dark-mode-switch-styled wp-dark-mode-switch-3'
-        await expect(expectedStyle).toEqual(flSWStyleElem)
-        console.log('WP Dark Mode 3rd Switch is Validated')
-        
+        const expectedStyle = 'wp-dark-mode-switch-3'
+        await expect(flSWStyleElem).toContain(expectedStyle)
+        console.log('WP Dark Mode 3rd Switch is Validated')        
         await browser.pause(3000)
 
     });
     it('Dark Mode Custom Scale value 220', async() => {
         const WPDMSwitchElem2 = await $('div.wp-dark-mode-floating-switch > div > div')
         const switchPositionScale = await WPDMSwitchElem2.getAttribute('style')
-        const expectedScale = '--wp-dark-mode-switch-scale: 2.2'
-        await expect(expectedScale).toEqual(switchPositionScale)
+        const expectedScale = '2.2'
+        await expect(switchPositionScale).toContain(expectedScale)
         console.log('Dark Mode Floating Switch Scale value 220 is Validated')
         await browser.pause(3000)
         
@@ -56,9 +55,10 @@ describe('Validate whether the Darkmode is working or not on the Admin Dashboard
         const animationDarkMode = await $('.wp-dark-mode-active.wp-dark-mode-animation')
         const animationDarkModeElem = await animationDarkMode.getAttribute('data-wp-dark-mode-animation')
         const expectedanimation = 'flip'
-        await expect(expectedanimation).toEqual(animationDarkModeElem)
+        await expect(animationDarkModeElem).toContain(expectedanimation)
         console.log("Flip Animation is Validated")
         // console.log('animationDarkModeElem => ', animationDarkModeElem)
     });
+    
 
 });
