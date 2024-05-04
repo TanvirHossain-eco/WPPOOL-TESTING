@@ -1,0 +1,4 @@
+{
+  "using": "css selector",
+  "value": "div.wp-dark-mode-admin-sidebar-nav > div:nth-of-type(2) h4"
+}

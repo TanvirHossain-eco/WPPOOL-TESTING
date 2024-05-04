@@ -1,0 +1,5 @@
+{
+  "error": "no such element",
+  "message": "no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"button.bg-blue-500\"}\n  (Session info: chrome=124.0.6367.119)",
+  "stacktrace": "\tGetHandleVerifier [0x00007FF74AD81552+60802]\n\t(No symbol) [0x00007FF74ACFAC52]\n\t(No symbol) [0x00007FF74ABB7CE4]\n\t(No symbol) [0x00007FF74AC06D4D]\n\t(No symbol) [0x00007FF74AC06E1C]\n\t(No symbol) [0x00007FF74AC4CE37]\n\t(No symbol) [0x00007FF74AC2ABBF]\n\t(No symbol) [0x00007FF74AC4A224]\n\t(No symbol) [0x00007FF74AC2A923]\n\t(No symbol) [0x00007FF74ABF8FEC]\n\t(No symbol) [0x00007FF74ABF9C21]\n\tGetHandleVerifier [0x00007FF74B0841ED+3217949]\n\tGetHandleVerifier [0x00007FF74B0C6187+3488183]\n\tGetHandleVerifier [0x00007FF74B0BF10F+3459391]\n\tGetHandleVerifier [0x00007FF74AE3B916+823622]\n\t(No symbol) [0x00007FF74AD05FEF]\n\t(No symbol) [0x00007FF74AD00F14]\n\t(No symbol) [0x00007FF74AD010A2]\n\t(No symbol) [0x00007FF74ACF18F4]\n\tBaseThreadInitThunk [0x00007FFC22D6257D+29]\n\tRtlUserThreadStart [0x00007FFC2466AA48+40]\n"
+}

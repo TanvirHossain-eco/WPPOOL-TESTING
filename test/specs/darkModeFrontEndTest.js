@@ -1,4 +1,5 @@
-import { expect, browser, $ } from '@wdio/globals'
+// import { expect, browser, $ } from '@wdio/globals'
+// import AllureReporter from "@wdio/allure-reporter";
 
 describe('Validate whether the Darkmode is working or not on the Admin Dashboard', () => {
     it('Floating Switch Styles 3rd Tiles Selection', async() => {

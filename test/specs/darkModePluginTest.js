@@ -1,7 +1,8 @@
 // const {remote} = require('webdriverio');
 // const {assert} = require('chai');
 // const dotenv = require('dotenv');
-import { expect, browser, $ } from '@wdio/globals'
+// import { expect, browser, $ } from '@wdio/globals'
+// import AllureReporter from "@wdio/allure-reporter";
 
 describe('Dark Mode Plugin Testing', () => {
     it('Validate of admin login', async () => {
@@ -96,16 +97,12 @@ describe('Dark Mode Plugin Testing', () => {
     it('Validate whether the Darkmode is working or not on the Admin Dashboard', async() => {
         await $('#menu-dashboard').click()
         await browser.pause(3000)
-        const darkMoreElem = await $('#wpcontent')
-        const actualDarkModeColor = await darkMoreElem.getCSSProperty('background-color')
-        const expectedDarkModeColor = '#000000'
-        await expect(expectedDarkModeColor).toEqual(actualDarkModeColor.parsed.hex)
+        const darkMoreElem = await $('.wp-toolbar.wp-dark-mode-active')
+        const actualDarkModeColor = await darkMoreElem.getAttribute('data-darkmode-scheme')
+        const expectedDarkModeColor = 'dark'
+        await expect(expectedDarkModeColor).toEqual(actualDarkModeColor)
+        console.log('Dark Mode from Admin Dashboard is Validated')        
         
-        if(actualDarkModeColor.parsed.hex.includes('#000000')){
-            console.log ('Dark Mode Color is Verified & Dark Mode Color Code: ', actualDarkModeColor.parsed.hex)
-        }else{
-            console.log ('Dark Mode Color is not Verified & Current Color Code: ', actualDarkModeColor.parsed.hex)
-        }
     });
     it('Navigate to the WP Dark Mode & Change Floation Switch Style Settings', async() => {
         await $('#toplevel_page_wp-dark-mode div.wp-menu-name').click()

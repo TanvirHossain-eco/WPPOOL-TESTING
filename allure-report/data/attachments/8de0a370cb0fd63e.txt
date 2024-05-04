@@ -1,0 +1,4 @@
+{
+  "using": "css selector",
+  "value": ".wp-dark-mode-active.wp-dark-mode-animation"
+}

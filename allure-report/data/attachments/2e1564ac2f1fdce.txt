@@ -1,0 +1,39 @@
+{
+  "actions": [
+    {
+      "id": "action1",
+      "type": "key",
+      "parameters": {},
+      "actions": [
+        {
+          "type": "keyDown",
+          "value": ""
+        },
+        {
+          "type": "keyDown",
+          "value": ""
+        },
+        {
+          "type": "keyDown",
+          "value": "D"
+        },
+        {
+          "type": "pause",
+          "duration": 10
+        },
+        {
+          "type": "keyUp",
+          "value": ""
+        },
+        {
+          "type": "keyUp",
+          "value": ""
+        },
+        {
+          "type": "keyUp",
+          "value": "D"
+        }
+      ]
+    }
+  ]
+}
