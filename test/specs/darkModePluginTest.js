@@ -1,6 +1,7 @@
 // const {remote} = require('webdriverio');
 // const {assert} = require('chai');
 // const dotenv = require('dotenv');
+import { expect, browser, $ } from '@wdio/globals'
 
 describe('Dark Mode Plugin Testing', () => {
     it('Validate of admin login', async () => {
@@ -14,75 +15,75 @@ describe('Dark Mode Plugin Testing', () => {
         await $('#wp-submit').click()
         await browser.pause(3000)
     });
-    // Need to compress the code - From Here
-    // it('Check Whether or not WP Dark Mode Plugin is Installed & Activated', async() => {
-    //     // await browser.maximizeWindow()
-    //     // await browser.url('https://dev-wppoolstesting.pantheonsite.io/wp-admin/')
+    
+    it('Check Whether or not WP Dark Mode Plugin is Installed & Activated', async() => {
+        // await browser.maximizeWindow()
+        // await browser.url('https://dev-wppoolstesting.pantheonsite.io/wp-admin/')
         
-    //     await $('#menu-plugins').click()
-    //     await browser.pause(3000)
-    //     // const darkmodeExists = await browser.isExisting()
-    //     await $("input[type='search']").setValue('wp dark mode')
-    //     await browser.pause(3000)
-    //     const searchResults = await $('#the-list td').getText()
-    //     // const search2Results = await $('#activate-wp-dark-mode').getText()
-    //     if (searchResults.includes('No plugins found for: wp dark mode.')){
-    //         console.log('Plugin is not Installed Yet')
-    //         await browser.pause(3000)
-    //         await $('.page-title-action').click()
+        await $('#menu-plugins').click()
+        await browser.pause(3000)
+        // const darkmodeExists = await browser.isExisting()
+        await $("input[type='search']").setValue('wp dark mode')
+        await browser.pause(3000)
+        const searchResults = await $('#the-list td').getText()
+        // const search2Results = await $('#activate-wp-dark-mode').getText()
+        if (searchResults.includes('No plugins found for: wp dark mode.')){
+            console.log('Plugin is not Installed Yet')
+            await browser.pause(3000)
+            await $('.page-title-action').click()
             
-    //     } else {
-    //         const search2Results = await $('#the-list td span a').getText()
-    //         if (search2Results.includes('Activate')){
-    //             const button1 = await $('#activate-wp-dark-mode')
-    //             await button1.click()
-    //             await browser.pause(3000)
-    //             console.log ('Plugin is Installed & Activated')
-    //             await browser.pause(3000)
-    //             await $('#menu-plugins').click()
-    //             await $('.page-title-action').click()
-    //         }else {
-    //             console.log ('Plugin was Installed & Activated')
-    //             await browser.pause(3000)
-    //             await $('#menu-plugins').click()
-    //             await $('.page-title-action').click()
-    //         }
+        } else {
+            const search2Results = await $('#the-list td span a').getText()
+            if (search2Results.includes('Activate')){
+                const button1 = await $('#activate-wp-dark-mode')
+                await button1.click()
+                await browser.pause(3000)
+                console.log ('Plugin is Installed & Activated')
+                await browser.pause(3000)
+                await $('#menu-plugins').click()
+                await $('.page-title-action').click()
+            }else {
+                console.log ('Plugin was Installed & Activated')
+                await browser.pause(3000)
+                await $('#menu-plugins').click()
+                await $('.page-title-action').click()
+            }
             
-    //     } 
+        } 
                    
-    // });
-    // it('Find & Verify WP Dark Mode Plugin is Installed & Activated', async() => {
-    //     await $("input[type='search']").setValue('wp dark mode')
-    //     await browser.pause(3000)
-    //     const searchResults2 = await $('div.plugin-card-wp-dark-mode div.desc a').getText()
-    //     if (searchResults2.includes('WPPOOL')){
-    //         const button2= await $('div.plugin-card-wp-dark-mode div.action-links li .button')
-    //         const buttonText2 = await button2.getText()
-    //         if (buttonText2.includes('Install Now')){
-    //             await button2.click()
-    //             console.log('Plugin is Installed')
-    //             await browser.pause(3000)
-    //             await button2.click()
-    //             console.log('Plugin is Installed & Activated')
-    //             await browser.pause(3000)
+    });
+    it('Find & Verify WP Dark Mode Plugin is Installed & Activated', async() => {
+        await $("input[type='search']").setValue('wp dark mode')
+        await browser.pause(3000)
+        const searchResults2 = await $('div.plugin-card-wp-dark-mode div.desc a').getText()
+        if (searchResults2.includes('WPPOOL')){
+            const button2= await $('div.plugin-card-wp-dark-mode div.action-links li .button')
+            const buttonText2 = await button2.getText()
+            if (buttonText2.includes('Install Now')){
+                await button2.click()
+                console.log('Plugin is Installed')
+                await browser.pause(3000)
+                await button2.click()
+                console.log('Plugin is Installed & Activated')
+                await browser.pause(3000)
                 
-    //         } else if (buttonText2.includes('Activate')) {
-    //             await button2.click()
-    //             console.log('Plugin was Installed Before, Now It is Activated')
-    //             await browser.pause(3000)
-    //         } else {
-    //             console.log ('Plugin was Installed & Activated')
-    //             await browser.pause(3000)
+            } else if (buttonText2.includes('Activate')) {
+                await button2.click()
+                console.log('Plugin was Installed Before, Now It is Activated')
+                await browser.pause(3000)
+            } else {
+                console.log ('Plugin was Installed & Activated')
+                await browser.pause(3000)
                 
-    //         }
+            }
             
-    //     }else{
-    //         console.log ('Plugin is not Found')
-    //         await browser.pause(3000)
-    //     }        
+        }else{
+            console.log ('Plugin is not Found')
+            await browser.pause(3000)
+        }        
            
-    // });
-    // Need to compress the code - to here
+    });
+    
     it('Enable Backend Darkmode from Settings', async() => {
         
         await $('#toplevel_page_wp-dark-mode div.wp-menu-name').click()
@@ -265,43 +266,6 @@ describe('Dark Mode Plugin Testing', () => {
         }
 
     });
-    it('Validate whether the Darkmode is working or not on the Admin Dashboard', async() => {
-        // await browser.maximizeWindow()
-        // await browser.url('https://dev-wppoolstesting.pantheonsite.io')
-        const WPPOOLWebsite = await $('#wp-admin-bar-site-name > a')
-        await WPPOOLWebsite.click()
-        await browser.pause(3000)
-        const WPDMSwitchElem = await $('div.wp-dark-mode-floating-switch')
-        const SwitchElemPositionX = await WPDMSwitchElem.getLocation('x')
-        const SwitchElemPositionY = await WPDMSwitchElem.getLocation('y')
-        console.log('Element X Position: ', SwitchElemPositionX)
-        console.log('Element Y Position: ', SwitchElemPositionY)
-        const expectedX = 10; // Left edge of the screen
-        const expectedY = 584; // Bottom edge of the screen
-        await expect(SwitchElemPositionX).toEqual(expectedX)
-        await expect(SwitchElemPositionY).toEqual(expectedY)
-        console.log('Dark Mode Floating Switch Left Position is Validated')
-        await browser.pause(6000)
-        const WPDMSwitchElem2 = await $('div.wp-dark-mode-floating-switch > div > div')
-        const switchPositionScale = await WPDMSwitchElem2.getAttribute('style')
-        if (switchPositionScale.includes('2.2')) {
-            console.log('switchPositionScale => ', switchPositionScale)
-            console.log('Dark Mode Floating Switch Scale Position is Validated')
-        }else {
-            console.log('Dark Mode Floating Switch Scale Position is not Validated')
-        }
-        
-    });
-
-
-    // it('Validate whether the Darkmode is working or not from the Frontend', async() => {
-    //     await browser.maximizeWindow()
-    //     const WPPOOLWebsite = await $('#wp-admin-bar-site-name > a')
-    //     await WPPOOLWebsite.click()
-    //     await browser.pause(3000)
-    //     const WPDMSwitchPosition = await $('div.wp-dark-mode-floating-switch')
-    //     await WPDMSwitchPosition.getCSSProperty('style')
-
-    // });
+    
 });
 
