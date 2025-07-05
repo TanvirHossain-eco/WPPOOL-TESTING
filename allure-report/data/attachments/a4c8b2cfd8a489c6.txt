@@ -1,0 +1,4 @@
+{
+  "using": "css selector",
+  "value": "#wp-admin-bar-wp-dark-mode-admin-bar-switch span:nth-of-type(2)"
+}

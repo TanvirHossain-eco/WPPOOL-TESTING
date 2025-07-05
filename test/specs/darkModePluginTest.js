@@ -9,6 +9,8 @@ describe('Dark Mode Plugin Testing', () => {
         await browser.maximizeWindow()
         await browser.url('https://dev-wppoolstesting.pantheonsite.io/wp-admin')
         await browser.pause(3000)
+        await $('.pds-button').click()
+        await browser.pause(3000)
         await $('#user_login').setValue('admin@wppool.com')
         await browser.pause(3000)
         await $('#user_pass').setValue('Admin@321#')

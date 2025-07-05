@@ -72,3 +72,7 @@ all the steps that followed are given below
 
 Finally, accessing wp-admin with .env.example & automated allure report generating with allure-commandline are causing run time errors while running scripts
 
+**7. Update all the packages
+============================**
+npm i @wdio/cli@latest @wdio/allure-reporter@latest @wdio/local-runner@latest @wdio/mocha-framework@latest @wdio/spec-reporter@latest eslint-plugin-wdio@latest allure-commandline@latest dotenv@latest --save-dev
+
